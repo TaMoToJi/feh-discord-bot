@@ -22,7 +22,7 @@ module.exports = class StartCommand extends Command {
       )
     } else {
       database.users[message.author.id] = {
-        balance: 0,
+        balance: 20,
         heroes: [],
         inventory: []
       }
