@@ -7,7 +7,7 @@ module.exports = class YouSuckCommand extends Command {
       name: 'nou',
       group: 'misc',
       memberName: 'nou',
-      description: 'Give the bot creators some feedback',
+      description: 'No u',
       examples: ['nou'],
       aliases: ['no-u']
     })
