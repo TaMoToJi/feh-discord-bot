@@ -9,21 +9,44 @@ module.exports = class BalanceCommand extends Command {
       memberName: 'balance',
       description: 'Shows your balance of orbs',
       examples: ['balance'],
-      aliases: ['bal', 'orbs']
+      aliases: ['bal', 'orbs'],
+      args: [
+        {
+          key: 'user',
+          type: 'user',
+          default: true,
+          prompt: 'What user?'
+        }
+      ]
     })
   }
-  run (message) {
+  run (message, args) {
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
     )
-    if (!database.users[message.author.id]) {
+    if (
+      !database.users[args.user === true ? message.author.id : args.user.id]
+    ) {
       return message.reply(
-        `You didn't start the game! Try \`@${this.client.user.tag} start\`.`
+        `${
+          args.user === true || args.user.id === message.author.id
+            ? 'You'
+            : args.user.username
+        } didn't start the game! ${
+          args.user === true || args.user.id === message.author.id
+            ? 'Try'
+            : 'They need to type'
+        } \`@${this.client.user.tag} start\`.`
       )
     } else {
       return message.reply(
-        `You have a balance of ${
-          database.users[message.author.id].balance
+        `${
+          args.user === true || args.user.id === message.author.id
+            ? 'You have'
+            : `${args.user.username} has`
+        } a balance of ${
+          database.users[args.user === true ? message.author.id : args.user.id]
+            .balance
         } orbs`
       )
     }
