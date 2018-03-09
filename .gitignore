@@ -66,3 +66,6 @@ config.js
 # Database
 settings.sqlite3
 
+# Bot Data
+data.json
+

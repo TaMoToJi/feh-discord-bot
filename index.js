@@ -18,7 +18,10 @@ client
   .catch(console.error)
 
 client.registry
-  .registerGroups([['items', 'Your inventory/balance']])
+  .registerGroups([
+    ['items', 'Your inventory/balance'],
+    ['game', 'General game commands']
+  ])
   .registerDefaults()
   .registerCommandsIn(path.join(__dirname, 'commands'))
 
