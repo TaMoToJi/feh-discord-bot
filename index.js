@@ -20,7 +20,8 @@ client
 client.registry
   .registerGroups([
     ['items', 'Your inventory/balance'],
-    ['game', 'General game commands']
+    ['game', 'General game commands'],
+    ['misc', 'Other random commands']
   ])
   .registerDefaults()
   .registerCommandsIn(path.join(__dirname, 'commands'))
