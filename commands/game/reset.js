@@ -37,7 +37,7 @@ module.exports = class ResetCommand extends Command {
         })
         awaitConfirm[message.author.id] = false
         return message.channel.send(
-          `Successfully reset the game for <@${message.author.id}>.`
+          `Successfully reset the game for ${message.author}.`
         )
       }
     }

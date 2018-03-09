@@ -13,14 +13,18 @@ module.exports = class BalanceCommand extends Command {
     })
   }
   run (message) {
-    var database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
+    var database = JSON.parse(
+      fs.readFileSync('data.json', { encoding: 'utf-8' })
+    )
     if (!database.users[message.author.id]) {
       return message.reply(
         `You didn't start the game! Try \`@${this.client.user.tag} start\`.`
       )
     } else {
       return message.reply(
-        `You have a balance of ${database.users[message.author.id].balance}`
+        `You have a balance of ${
+          database.users[message.author.id].balance
+        } orbs`
       )
     }
   }
