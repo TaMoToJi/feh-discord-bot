@@ -8,7 +8,7 @@ module.exports = class BalanceCommand extends Command {
       group: 'items',
       memberName: 'balance',
       description: 'Shows your balance of orbs',
-      examples: ['balance'],
+      examples: ['balance', 'balance MegaNoob123'],
       aliases: ['bal', 'orbs'],
       args: [
         {
