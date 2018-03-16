@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando')
 const { RichEmbed } = require('discord.js')
-const { heroes } = require('fire-emblem-heroes-stats').default
 
 module.exports = class InfoCommand extends Command {
   constructor (client) {
@@ -14,7 +13,7 @@ module.exports = class InfoCommand extends Command {
       args: [
         {
           key: 'hero',
-          type: 'string',
+          type: 'hero',
           prompt: 'What hero?'
         }
       ],
@@ -23,9 +22,7 @@ module.exports = class InfoCommand extends Command {
   }
 
   run (message, args) {
-    let hero = heroes.find(
-      element => element.name.toLowerCase() === args.hero.toLowerCase()
-    )
+    let { hero } = args
     if (!hero) message.reply(`Could not find the hero "${args.hero}"`)
     else {
       message.reply('', {

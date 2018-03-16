@@ -25,6 +25,7 @@ client.registry
     ['misc', 'Other random commands']
   ])
   .registerDefaults()
+  .registerTypesIn(path.join(__dirname, 'types'))
   .registerCommandsIn(path.join(__dirname, 'commands'))
 
 client.on('ready', () => {
