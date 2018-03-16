@@ -21,7 +21,7 @@ module.exports = class InfoCommand extends Command {
     })
   }
 
-  run (message, args) {
+  parse (message, args) {
     let { hero } = args
     if (!hero) message.reply(`Could not find the hero "${args.hero}"`)
     else {
