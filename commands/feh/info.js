@@ -22,15 +22,12 @@ module.exports = class InfoCommand extends Command {
   }
 
   run (message, args) {
-    let { hero } = args
-    if (!hero) message.reply(`Could not find the hero "${args.hero}"`)
-    else {
-      message.reply('', {
-        embed: new RichEmbed()
-          .setThumbnail(hero.assets.portrait['113px'])
-          .setTitle(`Hero Info: ${hero.name}`)
-          .addField('Rarities', hero.rarities)
-      })
-    }
+    let hero = args.hero
+    message.reply('', {
+      embed: new RichEmbed()
+        .setThumbnail(encodeURI(hero.assets.portrait['113px']))
+        .setTitle(`Hero Info: ${hero.name}`)
+        .addField('Rarities', hero.rarities)
+    })
   }
 }
