@@ -10,7 +10,7 @@ module.exports = class HeroArgumentType extends ArgumentType {
     let name = value.split(':')[0].trim().toLowerCase()
     let title = (value.split(':')[1] || '').trim().toLowerCase()
     let info = heroes.filter(hero => {
-      let neededName = hero.name.replace(/ (.*)/, '').toLowerCase()
+      let neededName = hero.name.replace(/ \(.*\)/, '').toLowerCase()
       if (!title) return neededName === name
       else return neededName === name && hero.title.toLowerCase() === title
     })
