@@ -32,7 +32,7 @@ module.exports = class HeroArgumentType extends ArgumentType {
     let name = value.split(':')[0].trim()
     let title = (value.split(':')[1] || '').trim()
     return heroes.find(hero => {
-      let neededName = hero.name.replace(/ (.*)/, '')
+      let neededName = hero.name.replace(/ \(.*\)/, '')
       if (!title) return neededName === name
       else return neededName === name && hero.title === title
     })
