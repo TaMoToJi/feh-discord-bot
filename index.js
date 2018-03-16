@@ -21,6 +21,7 @@ client.registry
   .registerGroups([
     ['items', 'Your inventory/balance'],
     ['game', 'General game commands'],
+    ['feh', 'General FEH commands (i.e. stats lookup)'],
     ['misc', 'Other random commands']
   ])
   .registerDefaults()
