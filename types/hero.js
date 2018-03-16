@@ -15,7 +15,7 @@ module.exports = class HeroArgumentType extends ArgumentType {
       else return neededName === name && hero.title.toLowerCase() === title
     })
     if (info.length === 1) return true
-    else if (info.length === 0) return 'You have provided an invalid hero.'
+    else if (info.length === 0) return 'You have provided an invalid hero. Please try again.'
     else {
       let possibilities = []
       for (let hero, i = 0; i < info.length; i++) {
