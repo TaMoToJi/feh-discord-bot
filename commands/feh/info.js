@@ -8,7 +8,7 @@ module.exports = class InfoCommand extends Command {
       group: 'feh',
       memberName: 'info',
       description: 'Shows info about a certain hero',
-      examples: ['info Ike'],
+      examples: ['info Ike: Vanguard Legend'],
       aliases: ['lookup', 'stats'],
       args: [
         {
