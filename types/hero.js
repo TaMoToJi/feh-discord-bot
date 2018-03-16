@@ -28,7 +28,7 @@ module.exports = class HeroArgumentType extends ArgumentType {
     }
   }
 
-  run (value) {
+  parse (value) {
     let name = value.split(':')[0].trim()
     let title = (value.split(':')[1] || '').trim()
     return heroes.find(hero => {
