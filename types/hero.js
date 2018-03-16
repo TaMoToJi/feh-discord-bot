@@ -7,8 +7,8 @@ module.exports = class HeroArgumentType extends ArgumentType {
   }
 
   validate (value) {
-    let name = value.split(':')[0].trim()
-    let title = (value.split(':')[1] || '').trim()
+    let name = value.split(':')[0].trim().toLowerCase()
+    let title = (value.split(':')[1] || '').trim().toLowerCase()
     let info = heroes.filter(hero => {
       let neededName = hero.name.replace(/ (.*)/, '')
       if (!title) return neededName === name
