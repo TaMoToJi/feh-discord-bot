@@ -26,7 +26,8 @@ module.exports = class InfoCommand extends Command {
     var embed = new RichEmbed()
     embed
       .setThumbnail(encodeURI(hero.assets.portrait['113px']))
-      .setTitle(`Hero Info: ${hero.name}`)
+      .setTitle(`Hero Info: ${hero.shortName || hero.name}`)
+      .addField('Title', hero.title, true)
       .addField('Rarities', hero.rarities, true)
       .addField('Move Type', hero.moveType, true)
       .addField('Weapon Type', hero.weaponType, true)
