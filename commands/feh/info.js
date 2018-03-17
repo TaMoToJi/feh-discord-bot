@@ -61,6 +61,10 @@ module.exports = class InfoCommand extends Command {
         }, Def: ${displayStats[3]}, Res: ${displayStats[4]}`
       )
     }
+    if (hero.weaponType.startsWith('Blue')) embed.setColor('BLUE')
+    else if (hero.weaponType.startsWith('Red')) embed.setColor('RED')
+    else if (hero.weaponType.startsWith('Green')) embed.setColor('GREEN')
+    else embed.setColor('#ffffff')
     message.reply('', { embed })
   }
 }
