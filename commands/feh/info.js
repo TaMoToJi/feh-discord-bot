@@ -23,11 +23,15 @@ module.exports = class InfoCommand extends Command {
 
   run (message, args) {
     let hero = args.hero
+    let embed = new RichEmbed()
+    embed
+      .setThumbnail(encodeURI(hero.assets.portrait['113px']))
+      .setTitle(`Hero Info: ${hero.name}`)
+      .addField('Rarities', hero.rarities)
+      .addField('Move Type', hero.moveType)
+      .addField('Weapon Type', hero.weaponType)
     message.reply('', {
-      embed: new RichEmbed()
-        .setThumbnail(encodeURI(hero.assets.portrait['113px']))
-        .setTitle(`Hero Info: ${hero.name}`)
-        .addField('Rarities', hero.rarities)
+      embed
     })
   }
 }
