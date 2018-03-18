@@ -9,7 +9,19 @@ module.exports = class ResetBalanceCommand extends Command {
       memberName: 'resetbalance',
       description: "Resets a user's balance",
       examples: ['resetbalance ev3commander', 'resetbalance MegaNoob123'],
-      aliases: ['resetbal', 'reset-balance', 'reset-bal', 'resetorbs', 'reset-orbs', 'clearbal', 'clear-balance', 'clearbalance', 'clear-bal', 'clearorbs', 'clear-orbs'],
+      aliases: [
+        'resetbal',
+        'reset-balance',
+        'reset-bal',
+        'resetorbs',
+        'reset-orbs',
+        'clearbal',
+        'clear-balance',
+        'clearbalance',
+        'clear-bal',
+        'clearorbs',
+        'clear-orbs'
+      ],
       args: [
         {
           key: 'user',
@@ -31,12 +43,13 @@ module.exports = class ResetBalanceCommand extends Command {
         } start\`.`
       )
     } else {
-      database.users[args.user.id].balance = 0
+      let orbs = database.users[args.user.id].balance
+      database.users[args.user.id].balance = 20
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
       return message.channel.send(
-        `Successfully reset ${args.user}'s orbs`
+        `Successfully reset ${args.user}'s balance of ${orbs} orbs.`
       )
     }
   }
