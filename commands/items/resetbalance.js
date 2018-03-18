@@ -9,7 +9,7 @@ module.exports = class ResetBalanceCommand extends Command {
       memberName: 'resetbalance',
       description: "Resets a user's balance",
       examples: ['resetbalance ev3commander', 'resetbalance MegaNoob123'],
-      aliases: ['resetbal', 'reset-balance', 'reset-bal', 'resetorbs', 'reset-orbs', 'clearbal', 'clear-balance', 'clearbalance', 'clear-bal', clearorbs', 'clear-orbs'],
+      aliases: ['resetbal', 'reset-balance', 'reset-bal', 'resetorbs', 'reset-orbs', 'clearbal', 'clear-balance', 'clearbalance', 'clear-bal', 'clearorbs', 'clear-orbs'],
       args: [
         {
           key: 'user',
