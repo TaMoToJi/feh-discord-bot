@@ -81,7 +81,7 @@ module.exports = class SummonCommand extends Command {
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
-      if (available.filter(e => e === undefined).length === 0) break
+      if (available.filter(e => e === undefined).length === 5) break
     }
     message.reply('Summoning session ended.')
   }
