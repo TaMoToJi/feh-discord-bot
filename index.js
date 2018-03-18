@@ -20,6 +20,7 @@ client
 client.registry
   .registerGroups([
     ['items', 'Your inventory/balance'],
+    ['heroes', 'Your heroes/skills'],
     ['game', 'General game commands'],
     ['feh', 'General FEH commands'],
     ['misc', 'Other random commands']
