@@ -56,10 +56,12 @@ module.exports = class SummonCommand extends Command {
       availableColors.push(color)
     }
     const msg = await message.reply('', { embed })
-    for (let i = 0; i < emotes.length; i++) {
-      await msg.react(emotes[i])
-    }
-    msg.react('🚫')
+    ;(async () => {
+      for (let i = 0; i < emotes.length; i++) {
+        await msg.react(emotes[i])
+      }
+      msg.react('🚫')
+    })()
     var summoning = true
     var available = [0, 1, 2, 3, 4]
     while (summoning !== null) {
@@ -74,9 +76,13 @@ module.exports = class SummonCommand extends Command {
       }`
       available[available.indexOf(summoning)] = undefined
       msg.edit(message.author, embed)
+      database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
+      database.users[message.author.id].balance -= 5
+      fs.writeFile('data.json', JSON.stringify(database), err => {
+        if (err) throw err
+      })
       if (available.length === 0) break
     }
     message.reply('Summoning session ended.')
-    database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
   }
 }
