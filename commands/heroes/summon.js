@@ -77,5 +77,6 @@ module.exports = class SummonCommand extends Command {
       if (available.length === 0) break
     }
     message.reply('Summoning session ended.')
+    database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
   }
 }
