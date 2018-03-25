@@ -5,9 +5,7 @@ const { webhook: config } = require('./config')
 const hook = new WebhookClient(config.id, config.token)
 
 setInterval(() => {
-  const stdout = execSync('git pull', {
-    detached: true
-  })
+  const stdout = execSync('git pull')
 
   if (/Already up to date\./.test(stdout)) return
   hook.send(
