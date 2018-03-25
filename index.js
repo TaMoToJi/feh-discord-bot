@@ -1,4 +1,5 @@
 const Commando = require('discord.js-commando')
+const { WebhookClient, RichEmbed } = require('discord.js')
 const sqlite = require('sqlite')
 const path = require('path')
 const config = require('./config')
@@ -8,6 +9,8 @@ const client = new Commando.Client({
   commandPrefix: config.prefix || '!fe',
   invite: config.invite
 })
+
+const hook = new WebhookClient(config.webhook.id, config.webhook.token)
 
 client
   .setProvider(
@@ -34,6 +37,12 @@ client.on('ready', () => {
   console.log('Logged in as:')
   console.log(`${client.user.tag} - (${client.user.id})`)
   client.user.setActivity(`@${client.user.username} help`)
+  hook.send(
+    new RichEmbed()
+      .setTitle('Bot ready!')
+      .addField('Logged in as:', `${client.user.tag} - (${client.user.id})`)
+      .setColor('GREEN')
+  )
 })
 
 client.login(config.token)

@@ -4,7 +4,9 @@
   "description": "A Fire Emblem Heroes Discord bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "gitpull": "node spam_git_pull.js",
+    "spawner": "node spawner.js"
   },
   "repository": {
     "type": "git",
