@@ -11,6 +11,7 @@ setInterval(() => {
       new RichEmbed()
         .setTitle('Pulled changes via git')
         .setDescription(`\`\`\`${stdout}\`\`\``)
+        .setColor('ORANGE')
     )
   })
 }, 15e3)
