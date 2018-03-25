@@ -34,7 +34,7 @@ client.registry
 
 client.on('ready', () => {
   console.log('Connected')
-  console.log('Logged in as:')
+  console.log('Logged in as')
   console.log(`${client.user.tag} - (${client.user.id})`)
   client.user.setActivity(`@${client.user.username} help`)
   hook.send(
