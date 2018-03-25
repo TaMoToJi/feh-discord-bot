@@ -1,11 +1,13 @@
-const { exec } = require('child_process')
+const { execSync } = require('child_process')
 const { WebhookClient, RichEmbed } = require('discord.js')
+const { webhook: config } = require('./config')
 
-const hook = new WebhookClient()
+const hook = new WebhookClient(config.id, config.token)
 
 setInterval(() => {
-  exec('git pull', (error, stdout) => {
-    if (error) console.log(error)
+  try {
+    const stdout = execSync('git pull')
+
     if (/Already up to date\./.test(stdout)) return
     hook.send(
       new RichEmbed()
@@ -13,5 +15,7 @@ setInterval(() => {
         .setDescription(`\`\`\`${stdout}\`\`\``)
         .setColor('ORANGE')
     )
-  })
+  } catch (error) {
+    console.error(error)
+  }
 }, 15e3)
