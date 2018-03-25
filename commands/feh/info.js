@@ -32,7 +32,7 @@ module.exports = class InfoCommand extends Command {
       .addField('Move Type', hero.moveType, true)
       .addField('Weapon Type', hero.weaponType, true)
       .setFooter(
-        'Level 1 stats do not take variance into account. Level 40 stats do.'
+        'Level 1 stats do not take variance into account; level 40 stats do.'
       )
     for (let stars in hero.stats[1]) {
       let stats = hero.stats[1][stars]
