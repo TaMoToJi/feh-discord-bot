@@ -1,7 +1,8 @@
 const { exec } = require('child_process')
 const { WebhookClient, RichEmbed } = require('discord.js')
+const { webhook: config } = require('./config')
 
-const hook = new WebhookClient()
+const hook = new WebhookClient(config.id, config.token)
 
 setInterval(() => {
   exec('git pull', (error, stdout) => {
