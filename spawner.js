@@ -47,7 +47,6 @@ ${error}
           )
           .setColor('RED')
       )
-      .then(() => mainCycle())
   }).then(() => mainCycle())
 }
 
