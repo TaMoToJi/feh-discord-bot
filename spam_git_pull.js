@@ -8,7 +8,7 @@ setInterval(() => {
   try {
     const stdout = execSync('git pull')
 
-    if (/Already up to date\./.test(stdout)) return
+    if (/Already up-to-date\./.test(stdout)) return
     hook.send(
       new RichEmbed()
         .setTitle('Pulled changes via git')
