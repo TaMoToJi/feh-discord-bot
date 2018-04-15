@@ -10,6 +10,8 @@ const client = new Commando.Client({
   invite: config.invite
 })
 
+if (!config.webhook) config.webhook = {} // Because who cares
+
 const hook = new WebhookClient(config.webhook.id, config.webhook.token)
 
 client
