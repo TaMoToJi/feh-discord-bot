@@ -40,7 +40,7 @@ client.on('ready', () => {
   console.log(`${client.user.tag} - (${client.user.id})`)
   client.user.setActivity(`@${client.user.username} help`)
   hook.send(
-    new RichEmbed()
+    new MessageEmbed()
       .setTitle('Bot ready!')
       .addField('Logged in as', `${client.user.tag} - (${client.user.id})`)
       .setColor('GREEN')
