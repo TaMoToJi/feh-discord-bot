@@ -1,6 +1,6 @@
 const { exec } = require('child_process')
 const { webhook: config } = require('./config') || {webhook: {}} // Because who cares
-const { WebhookClient, RichEmbed } = require('discord.js')
+const { WebhookClient, MessageEmbed: RichEmbed } = require('discord.js')
 
 const hook = new WebhookClient(config.id, config.token)
 
