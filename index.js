@@ -1,5 +1,5 @@
 const Commando = require('discord.js-commando')
-const { WebhookClient, RichEmbed } = require('discord.js')
+const { WebhookClient, MessageEmbed } = require('discord.js')
 const sqlite = require('sqlite')
 const path = require('path')
 const config = require('./config')

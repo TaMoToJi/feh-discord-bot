@@ -1,4 +1,4 @@
-const { RichEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const { Command } = require('discord.js-commando')
 const { heroes } = require('fire-emblem-heroes-stats').default
 const fs = require('fs')
@@ -85,9 +85,9 @@ module.exports = class SummonCommand extends Command {
     if (database.users[message.author.id].balance < 5) {
       message.reply("You don't have enough orbs to summon a hero!")
       summoning = null
-    } else { 
+    } else {
       database = JSON.parse(
-      fs.readFileSync('data.json', { encoding: 'utf-8' }))
+        fs.readFileSync('data.json', { encoding: 'utf-8' }))
       database.users[message.author.id].balance -= 5
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err

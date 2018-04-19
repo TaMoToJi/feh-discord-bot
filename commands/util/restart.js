@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando')
 const { webhook: config } = require('../../config')
-const { WebhookClient, RichEmbed } = require('discord.js')
+const { WebhookClient, MessageEmbed } = require('discord.js')
 
 module.exports = class RestartCommand extends Command {
   constructor (client) {
@@ -20,7 +20,7 @@ module.exports = class RestartCommand extends Command {
     const hook = new WebhookClient(config.id, config.token)
     hook
       .send(
-        new RichEmbed()
+        new MessageEmbed()
           .setTitle('Process exited')
           .setDescription(
             `${message.author} used the \`!fe restart\` command in ${
