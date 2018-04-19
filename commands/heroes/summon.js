@@ -19,6 +19,11 @@ module.exports = class SummonCommand extends Command {
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
     )
+    if (!database.users[message.author.id]) {
+      return message.reply(
+        `You didn't start the game! Try \`@${this.client.user.tag} start\`.`
+      )
+    }
     const emotes = ['🇦', '🇧', '🇨', '🇩', '🇪']
     const colors = ['Red', 'Green', 'Blue', 'Colorless']
     const costs = [0, 4, 4, 4, 3]
