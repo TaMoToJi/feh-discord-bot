@@ -3,10 +3,10 @@ const { Command } = require('discord.js-commando')
 module.exports = class YouSuckCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'patreon',
+      name: 'twitter',
       group: 'misc',
-      memberName: 'patreon',
-      description: 'Support the bot on Patreon!',
+      memberName: 'twitter',
+      description: 'Check out our twitter!',
       examples: ['patreon']
     })
   }
