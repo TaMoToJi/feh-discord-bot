@@ -28,7 +28,7 @@ module.exports = class SummonCommand extends Command {
     const colors = ['Red', 'Green', 'Blue', 'Colorless']
     const costs = [0, 4, 4, 4, 3]
     var availableColors = []
-    var embed = new RichEmbed()
+    var embed = new MessageEmbed()
       .setTitle('Summoning')
       .setDescription('React with the letter of the hero you want to summon')
     async function performSummon (available, msg) {
