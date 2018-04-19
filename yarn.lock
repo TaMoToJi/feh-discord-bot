@@ -363,21 +363,21 @@ detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
 
-"discord.js-commando@github:discordjs/Commando#11.2":
-  version "0.9.0"
-  resolved "https://codeload.github.com/discordjs/Commando/tar.gz/821e0ada2165a7329477403355108f55408296e9"
+"discord.js-commando@github:discordjs/Commando":
+  version "0.10.0-dev"
+  resolved "https://codeload.github.com/discordjs/Commando/tar.gz/34bbb3e3a17dbc5687caa57eb77fc1a65a8579db"
   dependencies:
     common-tags "^1.0.0"
     escape-string-regexp "^1.0.0"
     require-all "^2.0.0"
 
-discord.js@^11.0.0:
-  version "11.3.2"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-11.3.2.tgz#3c4074c1cb1a4916582fb96ded5ffa1324411f95"
+"discord.js@github:discordjs/discord.js":
+  version "12.0.0-dev"
+  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/2dd7fd2739fb5c68832b7eafeab5a9daa2f5b331"
   dependencies:
-    long "^4.0.0"
-    prism-media "^0.0.2"
-    snekfetch "^3.6.4"
+    pako "^1.0.0"
+    prism-media "^0.2.0"
+    snekfetch "^3.6.0"
     tweetnacl "^1.0.0"
     ws "^4.0.0"
 
@@ -978,10 +978,6 @@ lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
-long@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
-
 lru-cache@^4.0.1:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.2.tgz#45234b2e6e2f2b33da125624c4664929a0224c3f"
@@ -1163,6 +1159,10 @@ p-try@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
 
+pako@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
+
 parse-json@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
@@ -1248,9 +1248,9 @@ prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
 
-prism-media@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.0.2.tgz#aa917b084576c4df6488e4ea8e7d6d44aed4b411"
+prism-media@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-0.2.1.tgz#7968f2c7194588887c4c48081968d8c28e0d2469"
 
 process-nextick-args@~2.0.0:
   version "2.0.0"
@@ -1440,7 +1440,7 @@ slice-ansi@1.0.0:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
 
-snekfetch@^3.6.4:
+snekfetch@^3.6.0:
   version "3.6.4"
   resolved "https://registry.yarnpkg.com/snekfetch/-/snekfetch-3.6.4.tgz#d13e80a616d892f3d38daae4289f4d258a645120"
 

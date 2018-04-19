@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/MegaCode18/feh-discord-bot#readme",
   "dependencies": {
-    "discord.js": "^11.0.0",
-    "discord.js-commando": "github:discordjs/Commando#11.2",
+    "discord.js": "github:discordjs/discord.js",
+    "discord.js-commando": "github:discordjs/Commando",
     "fire-emblem-heroes-stats": "^0.12.2",
     "sqlite": "^2.2.0"
   },
