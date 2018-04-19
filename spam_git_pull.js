@@ -1,5 +1,5 @@
 const { execSync } = require('child_process')
-const { WebhookClient, RichEmbed } = require('discord.js')
+const { WebhookClient, MessageEmbed: RichEmbed } = require('discord.js')
 const { webhook: config } = require('./config')
 
 const hook = new WebhookClient(config.id, config.token)
