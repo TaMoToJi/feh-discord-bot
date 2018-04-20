@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando')
+const path = require('path')
 const fs = require('fs')
 
 module.exports = class YouSuckCommand extends Command {
@@ -13,6 +14,6 @@ module.exports = class YouSuckCommand extends Command {
     })
   }
   run (message) {
-    message.reply('', { file: fs.readFileSync('img/no-no-u.png') })
+    message.reply('', { file: fs.readFileSync(path.join('img', 'no-no-u.png')) })
   }
 }
