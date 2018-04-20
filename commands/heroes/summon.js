@@ -60,7 +60,7 @@ module.exports = class SummonCommand extends Command {
           fs.readFileSync('data.json', { encoding: 'utf-8' })
         )
         database.users[message.author.id].balance -= costs[count]
-        fs.writeFile('data.json', JSON.stringify(database), err => {
+        fs.writeFileSync('data.json', JSON.stringify(database), err => {
           if (err) throw err
         })
         if (costs[count] !== 3) {
@@ -92,7 +92,7 @@ module.exports = class SummonCommand extends Command {
     } else {
       database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
       database.users[message.author.id].balance -= 5
-      fs.writeFile('data.json', JSON.stringify(database), err => {
+      fs.writeFileSync('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
     }
@@ -144,7 +144,7 @@ module.exports = class SummonCommand extends Command {
         title: hero.title,
         rarity: stars
       })
-      fs.writeFile('data.json', JSON.stringify(database), err => {
+      fs.writeFileSync('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
       embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')}: ${
