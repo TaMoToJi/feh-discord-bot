@@ -5,7 +5,7 @@ const { notSummonable } = require('../../util/not-summonable.json')
 const fs = require('fs')
 
 module.exports = class SummonCommand extends Command {
-  constructor (client) {
+  constructor(client) {
     super(client, {
       name: 'summon',
       group: 'heroes',
@@ -16,7 +16,7 @@ module.exports = class SummonCommand extends Command {
     })
   }
 
-  async run (message) {
+  async run(message) {
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
     )
@@ -33,7 +33,7 @@ module.exports = class SummonCommand extends Command {
     var embed = new MessageEmbed()
       .setTitle('Summoning')
       .setDescription('React with the letter of the hero you want to summon')
-    async function performSummon (available, msg) {
+    async function performSummon(available, msg) {
       const count = available.filter(e => e === undefined).length
       if (database.users[message.author.id].balance < costs[count]) {
         message.reply("You don't have enough orbs to summon a hero!")
@@ -56,7 +56,9 @@ module.exports = class SummonCommand extends Command {
           .then(m => setTimeout(() => m.delete(), 5e3))
         return performSummon(available, msg)
       } else {
-        database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
+        database = JSON.parse(
+          fs.readFileSync('data.json', { encoding: 'utf-8' })
+        )
         database.users[message.author.id].balance -= costs[count]
         fs.writeFile('data.json', JSON.stringify(database), err => {
           if (err) throw err
@@ -88,8 +90,7 @@ module.exports = class SummonCommand extends Command {
       message.reply("You don't have enough orbs to summon a hero!")
       summoning = null
     } else {
-      database = JSON.parse(
-        fs.readFileSync('data.json', { encoding: 'utf-8' }))
+      database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
       database.users[message.author.id].balance -= 5
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
@@ -111,16 +112,16 @@ module.exports = class SummonCommand extends Command {
         let rarities
         let summonable = true
         if (e.rarities.length === 3) {
-          rarities = [1, 2, 3, 4, 5].filter(f => 
-            f <= Number(e.rarities[2]) && f >= Number(e.rarities[0])
+          rarities = [1, 2, 3, 4, 5].filter(
+            f => f <= Number(e.rarities[2]) && f >= Number(e.rarities[0])
           )
         } else {
           rarities = [Number(e.rarities)]
         }
         for (let i = 0; i < notSummonable.length; i++) {
           if (notSummonable[i].name === e.name) {
-            if (notSummonable.title) {
-              if (notSummonable.title === e.title) {
+            if (notSummonable[i].title) {
+              if (notSummonable[i].title === e.title) {
                 summonable = false
                 break
               }
@@ -130,9 +131,22 @@ module.exports = class SummonCommand extends Command {
             }
           }
         }
-        return e.weaponType.startsWith(availableColors[summoning]) && rarities.includes(stars) && summonable
+        return (
+          e.weaponType.startsWith(availableColors[summoning]) &&
+          rarities.includes(stars) &&
+          summonable
+        )
       })
       let hero = heroList[Math.floor(Math.random() * heroList.length)]
+      database = JSON.parse(fs.readFileSync('data.json', { encoding: 'utf-8' }))
+      database.users[message.author.id].heroes.push({
+        name: hero.name,
+        title: hero.title,
+        rarity: stars
+      })
+      fs.writeFile('data.json', JSON.stringify(database), err => {
+        if (err) throw err
+      })
       embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')}: ${
         hero.title
       } ${stars}⭐`
