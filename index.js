@@ -7,7 +7,8 @@ const config = require('./config')
 const client = new Commando.Client({
   owner: config.owner,
   commandPrefix: config.prefix || '!fe',
-  invite: config.invite
+  invite: config.invite,
+  unknownCommandResponse: false
 })
 
 if (!config.webhook) config.webhook = {} // Because who cares
