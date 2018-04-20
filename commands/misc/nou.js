@@ -14,6 +14,6 @@ module.exports = class YouSuckCommand extends Command {
     })
   }
   run (message) {
-    message.reply('', { file: fs.readFileSync(path.join('img', 'no-no-u.png')) })
+    message.reply('', { files: [fs.readFileSync(path.join('img', 'no-no-u.png'))] })
   }
 }
