@@ -27,6 +27,7 @@ module.exports = class SummonCommand extends Command {
     const emotes = ['🇦', '🇧', '🇨', '🇩', '🇪']
     const colors = ['Red', 'Green', 'Blue', 'Colorless']
     const costs = [0, 4, 4, 4, 3]
+    const rates = [0.06, 0.62, 1, 0, 0]
     var availableColors = []
     var embed = new MessageEmbed()
       .setTitle('Summoning')
@@ -96,13 +97,30 @@ module.exports = class SummonCommand extends Command {
     while (summoning !== null) {
       summoning = await performSummon(available, msg)
       if (summoning === null) break
-      let heroList = heroes.filter(e =>
-        e.weaponType.startsWith(availableColors[summoning])
-      )
+      let stars
+      let random = Math.random()
+      if (random < rates[0]) {
+        stars = 5
+      } else if (random < rates[1]) {
+        stars = 4
+      } else {
+        stars = 3
+      }
+      let heroList = heroes.filter(e => {
+        let rarities
+        if (e.rarities.length === 3) {
+          rarities = [1, 2, 3, 4, 5].filter(f => 
+            f <= Number(e.rarities[2]) && f >= Number(e.rarities[0])
+          )
+        } else {
+          rarities = [Number(e.rarities)]
+        }
+        return e.weaponType.startsWith(availableColors[summoning]) && rarities.includes(stars)
+      })
       let hero = heroList[Math.floor(Math.random() * heroList.length)]
       embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')}: ${
         hero.title
-      }`
+      } ${stars}⭐`
       available[available.indexOf(summoning)] = undefined
       msg.edit(embed)
       if (available.filter(e => e === undefined).length === 5) break
