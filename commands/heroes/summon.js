@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const { Command } = require('discord.js-commando')
 const { heroes } = require('fire-emblem-heroes-stats').default
+const { notSummonable } = require('../../util/not-summonable.json')
 const fs = require('fs')
 
 module.exports = class SummonCommand extends Command {
@@ -108,6 +109,7 @@ module.exports = class SummonCommand extends Command {
       }
       let heroList = heroes.filter(e => {
         let rarities
+        let summonable = true
         if (e.rarities.length === 3) {
           rarities = [1, 2, 3, 4, 5].filter(f => 
             f <= Number(e.rarities[2]) && f >= Number(e.rarities[0])
@@ -115,7 +117,20 @@ module.exports = class SummonCommand extends Command {
         } else {
           rarities = [Number(e.rarities)]
         }
-        return e.weaponType.startsWith(availableColors[summoning]) && rarities.includes(stars)
+        for (let i = 0; i < notSummonable.length; i++) {
+          if (notSummonable[i].name === e.name) {
+            if (notSummonable.title) {
+              if (notSummonable.title === e.title) {
+                summonable = false
+                break
+              }
+            } else {
+              summonable = false
+              break
+            }
+          }
+        }
+        return e.weaponType.startsWith(availableColors[summoning]) && rarities.includes(stars) && summonable
       })
       let hero = heroList[Math.floor(Math.random() * heroList.length)]
       embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')}: ${
