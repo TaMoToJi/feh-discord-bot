@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando')
-const { RichEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 
 module.exports = class InfoCommand extends Command {
   constructor (client) {
@@ -23,7 +23,7 @@ module.exports = class InfoCommand extends Command {
 
   run (message, args) {
     var hero = args.hero
-    var embed = new RichEmbed()
+    var embed = new MessageEmbed()
     embed
       .setThumbnail(encodeURI(hero.assets.portrait['113px']))
       .setTitle(`Hero Info: ${hero.shortName || hero.name}`)
