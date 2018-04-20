@@ -7,7 +7,7 @@ module.exports = class YouSuckCommand extends Command {
       group: 'misc',
       memberName: 'twitter',
       description: 'Check out our twitter!',
-      examples: ['patreon']
+      examples: ['twitter']
     })
   }
   run (message) {
