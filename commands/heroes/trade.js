@@ -137,7 +137,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >=
+                  Number(m.content) >
                     database.users[message.author.id].heroes.length
                 ) {
                   return m.reply(
@@ -164,7 +164,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >= database.users[message.author.id].balance
+                  Number(m.content) > database.users[message.author.id].balance
                 ) {
                   return m.reply(
                     'That is not a valid orb amount! Trade terminated.'
@@ -200,7 +200,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >= database.users[user.id].heroes.length
+                  Number(m.content) > database.users[user.id].heroes.length
                 ) {
                   return m.reply(
                     'That is not a valid selection! Trade terminated.'
@@ -224,7 +224,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >= database.users[user.id].balance
+                  Number(m.content) > database.users[user.id].balance
                 ) {
                   return m.reply(
                     'That is not a valid orb amount! Trade terminated.'
