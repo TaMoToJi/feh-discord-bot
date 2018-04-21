@@ -12,7 +12,7 @@ module.exports = class ResetCommand extends Command {
       examples: ['reset'],
       aliases: ['resetgame'],
       throttling: {
-        usages: 1,
+        usages: 2,
         duration: 60 * 60 * 2
       }
     })
