@@ -16,7 +16,8 @@ module.exports = class ResetCommand extends Command {
           type: 'user',
           prompt: 'What user\'s game would you like to reset?'
         }
-      ]
+      ],
+      ownerOnly: true
     })
   }
   run (message, { user }) {
