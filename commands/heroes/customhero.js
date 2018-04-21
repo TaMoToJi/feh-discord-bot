@@ -4,12 +4,12 @@ const fs = require('fs')
 module.exports = class CustomHeroCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'addhero',
+      name: 'customhero',
       group: 'heroes',
-      memberName: 'addhero',
-      description: "Adds a hero to a user's inventory",
-      examples: ['addhero ev3commander 5 Fjorm'],
-      aliases: ['addunit', 'add-unit', 'add-hero'],
+      memberName: 'customhero',
+      description: "Adds a custom hero to a user's inventory",
+      examples: ['customhero Leif Meme Dank'],
+      aliases: ['customunit', 'custom-unit', 'custom-hero'],
       args: [
         {
           key: 'user',
