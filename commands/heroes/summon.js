@@ -147,9 +147,10 @@ module.exports = class SummonCommand extends Command {
       fs.writeFileSync('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
-      embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')}: ${
+      embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')
+}: ${
         hero.title
-      } ${stars}⭐`
+      } ${stars}\u2605`
       available[available.indexOf(summoning)] = undefined
       msg.edit(embed)
       if (available.filter(e => e === undefined).length === 5) break
