@@ -10,7 +10,11 @@ module.exports = class ResetCommand extends Command {
       memberName: 'reset',
       description: 'Resets the game',
       examples: ['reset'],
-      aliases: ['resetgame']
+      aliases: ['resetgame'],
+      throttling: {
+        usages: 1,
+        duration: 60 * 60 * 2
+      }
     })
   }
   run (message) {
