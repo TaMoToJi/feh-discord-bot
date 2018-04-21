@@ -5,7 +5,7 @@ const { notSummonable } = require('../../util/not-summonable.json')
 const fs = require('fs')
 
 module.exports = class SummonCommand extends Command {
-  constructor(client) {
+  constructor (client) {
     super(client, {
       name: 'summon',
       group: 'heroes',
@@ -16,7 +16,7 @@ module.exports = class SummonCommand extends Command {
     })
   }
 
-  async run(message) {
+  async run (message) {
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
     )
@@ -33,7 +33,7 @@ module.exports = class SummonCommand extends Command {
     var embed = new MessageEmbed()
       .setTitle('Summoning')
       .setDescription('React with the letter of the hero you want to summon')
-    async function performSummon(available, msg) {
+    async function performSummon (available, msg) {
       const count = available.filter(e => e === undefined).length
       if (database.users[message.author.id].balance < costs[count]) {
         message.reply("You don't have enough orbs to summon a hero!")
@@ -147,8 +147,7 @@ module.exports = class SummonCommand extends Command {
       fs.writeFileSync('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
-      embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')
-}: ${
+      embed.fields[summoning].value = `${hero.name.replace(/ \(.*\)/, '')}: ${
         hero.title
       } ${stars}\u2605`
       available[available.indexOf(summoning)] = undefined
