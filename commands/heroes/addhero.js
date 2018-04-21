@@ -41,7 +41,7 @@ module.exports = class AddBalanceCommand extends Command {
         } start\`.`
       )
     } else {
-      database.users[args.user.id].inventory.push({name: args.hero.name, title: args.hero.title, rarity: args.stars})
+      database.users[args.user.id].heroes.push({name: args.hero.name, title: args.hero.title, rarity: args.stars})
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
