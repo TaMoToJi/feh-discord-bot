@@ -46,7 +46,7 @@ module.exports = class AddBalanceCommand extends Command {
         if (err) throw err
       })
       return message.channel.send(
-        `Successfully added ${args.amount} orbs to ${args.user}`
+        `Successfully added a hero to ${args.user}`
       )
     }
   }
