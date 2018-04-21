@@ -137,7 +137,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >=
+                  Number(m.content) >
                     database.users[message.author.id].heroes.length
                 ) {
                   return m.reply(
@@ -164,7 +164,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >= database.users[message.author.id].balance
+                  Number(m.content) > database.users[message.author.id].balance
                 ) {
                   return m.reply(
                     'That is not a valid orb amount! Trade terminated.'
@@ -200,7 +200,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >= database.users[user.id].heroes.length
+                  Number(m.content) > database.users[user.id].heroes.length
                 ) {
                   return m.reply(
                     'That is not a valid selection! Trade terminated.'
@@ -224,7 +224,7 @@ module.exports = class ResetCommand extends Command {
                 )
                 if (
                   Number(m.content) < 1 ||
-                  Number(m.content) >= database.users[user.id].balance
+                  Number(m.content) > database.users[user.id].balance
                 ) {
                   return m.reply(
                     'That is not a valid orb amount! Trade terminated.'
@@ -248,7 +248,7 @@ module.exports = class ResetCommand extends Command {
           if (choices[0][1] === 'orbs') {
             readableChoices.push(`${choices[0][0]} orbs`)
           } else {
-            let hero = database.users[message.author.id].heroes[choices[0][0]]
+            let hero = database.users[message.author.id].heroes[choices[0][0] - 1]
             readableChoices.push(
               `${hero.rarity}\u2605 ${hero.name}: ${hero.title}`
             )
@@ -256,7 +256,7 @@ module.exports = class ResetCommand extends Command {
           if (choices[1][1] === 'orbs') {
             readableChoices.push(`${choices[1][0]} orbs`)
           } else {
-            let hero = database.users[user.id].heroes[choices[1][0]]
+            let hero = database.users[user.id].heroes[choices[1][0] - 1]
             readableChoices.push(
               `${hero.rarity}\u2605 ${hero.name}: ${hero.title}`
             )
@@ -268,6 +268,9 @@ module.exports = class ResetCommand extends Command {
               readableChoices[1]
             }. React with ✅ to confirm. This times out in 30 seconds`
           )
+          ;(async () => {
+            await msg.react('✅')
+          })()
           msg
             .awaitReactions(
               (reaction, usr) =>
