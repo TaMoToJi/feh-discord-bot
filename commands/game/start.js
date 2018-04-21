@@ -24,7 +24,8 @@ module.exports = class StartCommand extends Command {
       database.users[message.author.id] = {
         balance: 20,
         heroes: [],
-        inventory: []
+        inventory: [],
+        lastDaily: new Date(0)
       }
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
