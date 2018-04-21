@@ -268,6 +268,9 @@ module.exports = class ResetCommand extends Command {
               readableChoices[1]
             }. React with ✅ to confirm. This times out in 30 seconds`
           )
+          ;(async () => {
+            await msg.react('✅')
+          })()
           msg
             .awaitReactions(
               (reaction, usr) =>
