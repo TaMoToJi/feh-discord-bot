@@ -119,8 +119,8 @@ module.exports = class SummonCommand extends Command {
           rarities = [Number(e.rarities)]
         }
         for (let i = 0; i < notSummonable.length; i++) {
-          if (notSummonable[i].name === e.name) {
-            if (notSummonable[i].title) {
+          if (notSummonable[i].name === e.name.replace(/ \(.*\)/, '')) {
+            if (notSummonable[i].title != null) {
               if (notSummonable[i].title === e.title) {
                 summonable = false
                 break
@@ -132,9 +132,9 @@ module.exports = class SummonCommand extends Command {
           }
         }
         return (
+          summonable &&
           e.weaponType.startsWith(availableColors[summoning]) &&
-          rarities.includes(stars) &&
-          summonable
+          rarities.includes(stars)
         )
       })
       let hero = heroList[Math.floor(Math.random() * heroList.length)]
