@@ -19,7 +19,9 @@ module.exports = class AddBalanceCommand extends Command {
         {
           key: 'stars',
           type: 'integer',
-          prompt: 'How many stars should the hero have?'
+          prompt: 'How many stars should the hero have?',
+          max: 5,
+          min: 1
         },
         {
           key: 'hero',
