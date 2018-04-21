@@ -66,7 +66,7 @@ module.exports = class InventoryCommand extends Command {
               string += `${hero.rarity}\u2605 ${hero.name.replace(
                 / \(.*\)/,
                 ''
-              )}: ${hero.title}\n`
+              )}: ${hero.title} #${i + 1}\n`
               if (i === 19 + (page - 1) * 20) break
             }
             return string || '🚫 There are no heroes on this page!'
