@@ -248,7 +248,7 @@ module.exports = class ResetCommand extends Command {
           if (choices[0][1] === 'orbs') {
             readableChoices.push(`${choices[0][0]} orbs`)
           } else {
-            let hero = database.users[message.author.id].heroes[choices[0][0]]
+            let hero = database.users[message.author.id].heroes[choices[0][0] - 1]
             readableChoices.push(
               `${hero.rarity}\u2605 ${hero.name}: ${hero.title}`
             )
@@ -256,7 +256,7 @@ module.exports = class ResetCommand extends Command {
           if (choices[1][1] === 'orbs') {
             readableChoices.push(`${choices[1][0]} orbs`)
           } else {
-            let hero = database.users[user.id].heroes[choices[1][0]]
+            let hero = database.users[user.id].heroes[choices[1][0] - 1]
             readableChoices.push(
               `${hero.rarity}\u2605 ${hero.name}: ${hero.title}`
             )
