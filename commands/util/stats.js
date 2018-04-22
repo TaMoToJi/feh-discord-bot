@@ -17,6 +17,6 @@ module.exports = class StatsCommand extends Command {
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
     )
-    message.reply('', new MessageEmbed().setTitle('FEH Bot Stats').addField('Server Count', this.client.guilds.size).addField('Player Count', Object.keys(database.users).length).addField('Upvote Count', await this.client.dbl.getBot(this.client.user.id).points))
+    message.reply('', new MessageEmbed().setTitle('FEH Bot Stats').addField('Server Count', this.client.guilds.size).addField('Player Count', Object.keys(database.users).length).addField('Upvote Count', (await this.client.dbl.getBot(this.client.user.id)).points))
   }
 }
