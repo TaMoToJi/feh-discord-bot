@@ -11,6 +11,6 @@ module.exports = class YouSuckCommand extends Command {
     })
   }
   run (message) {
-    message.reply('https://discordapp.com/api/oauth2/authorize?client_id=436295083244126208&permissions=35904&scope=bot')
+    message.reply('https://discordapp.com/api/oauth2/authorize?client_id=436295083244126208&permissions=314432&scope=bot')
   }
 }
