@@ -4,7 +4,7 @@ const fs = require('fs')
 module.exports = class AddBalanceCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'release',
+      name: 'sendhome',
       group: 'heroes',
       memberName: 'sendhome',
       description: 'Sends a hero home',
