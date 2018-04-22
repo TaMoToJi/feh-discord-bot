@@ -9,14 +9,48 @@ module.exports = class YouSuckCommand extends Command {
       group: 'misc',
       memberName: 'vote',
       description: 'Upvote the bot on discordbots.org!',
-      aliases: ['votereward', 'voterewards', 'vote-reward', 'vote-rewards', 'upvote', 'upvotereward', 'upvoterewards', 'upvote-reward', 'upvote-rewards'],
+      aliases: [
+        'votereward',
+        'voterewards',
+        'vote-reward',
+        'vote-rewards',
+        'upvote',
+        'upvotereward',
+        'upvoterewards',
+        'upvote-reward',
+        'upvote-rewards'
+      ],
       examples: ['vote']
     })
   }
-  run (message) {
+  async run (message) {
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
     )
-    message.channel.send(database.users[message.author.id] ? '' : `Warning: you have not yet started the game. If you want to claim your 3 orbs, do \`@${this.client.user.tag} start\` before voting.`, new MessageEmbed().setTitle('Vote to recieve three free orbs!').setDescription('[Vote](https://discordbots.org/bot/436295083244126208/vote)'))
+    if (
+      database.users[message.author.id] &&
+      new Date() -
+        (new Date(database.users[message.author.id].voted || new Date(0))) >
+        1000 * 60 * 60 * 24 &&
+      (await this.client.dbl.hasVoted(message.author.id))
+    ) {
+      database.users[message.author.id].balance += 3
+      database.users[message.author.id].voted = new Date()
+      fs.writeFileSync('data.json', JSON.stringify(database))
+      return message.reply('Claimed 3 orbs.')
+    } else if (!database.users[message.author.id]) {
+      return message.reply(
+        `You didn't start the game! Try \`@${this.client.user.tag} start\`.`
+      )
+    } else if (await this.client.dbl.hasVoted(message.author.id)) {
+      return message.reply('You already claimed within the last 24 hours!')
+    }
+    message.channel.send(
+      new MessageEmbed()
+        .setTitle('Vote to recieve three free orbs!')
+        .setDescription(
+          '[Click here to vote.](https://discordbots.org/bot/436295083244126208/vote) Then use this command again to claim your orbs.'
+        )
+    )
   }
 }

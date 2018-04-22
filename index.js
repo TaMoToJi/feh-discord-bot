@@ -3,7 +3,6 @@ const { WebhookClient, MessageEmbed } = require('discord.js')
 const DBL = require('dblapi.js')
 const sqlite = require('sqlite')
 const path = require('path')
-const fs = require('fs')
 const config = require('./config')
 
 const client = new Commando.Client({
@@ -13,7 +12,7 @@ const client = new Commando.Client({
   unknownCommandResponse: false
 })
 
-const dbl = new DBL(config.dblToken, { webhookPort: 5000 }, client)
+client.dbl = new DBL(config.dblToken, { webhookPort: 5000 }, client)
 
 if (!config.webhook) config.webhook = {} // Because who cares
 
@@ -50,19 +49,6 @@ client.on('ready', () => {
       .addField('Logged in as', `${client.user.tag} - (${client.user.id})`)
       .setColor('GREEN')
   )
-})
-
-dbl.webhook.on('vote', ({ user }) => {
-  var database = JSON.parse(
-    fs.readFileSync('data.json', { encoding: 'utf-8' })
-  )
-  if (!database.users[user]) {
-    return
-  }
-  database.users[user].balance += 3
-  fs.writeFile('data.json', JSON.stringify(database), err => {
-    if (err) throw err
-  })
 })
 
 client.login(config.token)
