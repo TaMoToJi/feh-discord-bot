@@ -6,7 +6,7 @@ module.exports = class YouSuckCommand extends Command {
       name: 'invite',
       group: 'misc',
       memberName: 'invite',
-      description: 'Invite the bot to your invite!',
+      description: 'Invite the bot to your server!',
       examples: ['invite']
     })
   }
