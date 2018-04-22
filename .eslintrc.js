@@ -1,3 +1,6 @@
 module.exports = {
-    "extends": "standard"
+    "extends": "standard",
+    "rules": {
+      "standard/computed-property-even-spacing": 0
+    }
 };
