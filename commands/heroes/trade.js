@@ -281,7 +281,7 @@ module.exports = class ResetCommand extends Command {
               }
             )
             .then(() => {
-              oneConfirm ? confirm() : (oneConfirm = true)
+              oneConfirm ? confirm().then(message.channel.send('Trade confirmed!')) : (oneConfirm = true)
             })
           msg
             .awaitReactions(
