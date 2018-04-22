@@ -56,10 +56,10 @@ dbl.webhook.on('vote', ({ user }) => {
   var database = JSON.parse(
     fs.readFileSync('data.json', { encoding: 'utf-8' })
   )
-  if (!database.users[user.id]) {
+  if (!database.users[user]) {
     return
   }
-  database.users[user.id].balance += 3
+  database.users[user].balance += 3
   fs.writeFile('data.json', JSON.stringify(database), err => {
     if (err) throw err
   })
