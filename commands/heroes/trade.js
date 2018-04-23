@@ -68,7 +68,9 @@ module.exports = class ResetCommand extends Command {
     if (user.id === message.author.id) {
       return message.reply('Why trade with yourself? Get some friends 🅱oi')
     } else if (currentTrades[message.author.id] || currentTrades[user.id]) {
-      return message.reply('One of you is already trading! (If you\'re not, wait around 20 seconds and try again)')
+      return message.reply(
+        "One of you is already trading! (If you're not, wait around 20 seconds and try again)"
+      )
     }
     var database = JSON.parse(
       fs.readFileSync('data.json', { encoding: 'utf-8' })
@@ -249,7 +251,8 @@ module.exports = class ResetCommand extends Command {
           if (choices[0][1] === 'orbs') {
             readableChoices.push(`${choices[0][0]} orbs`)
           } else {
-            let hero = database.users[message.author.id].heroes[choices[0][0] - 1]
+            let hero =
+              database.users[message.author.id].heroes[choices[0][0] - 1]
             readableChoices.push(
               `${hero.rarity}\u2605 ${hero.name}: ${hero.title}`
             )
