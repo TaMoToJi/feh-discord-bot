@@ -32,7 +32,7 @@ module.exports = class AddBalanceCommand extends Command {
       if (rand < rates[0]) {
         win = 500
       } else if (rand < rates[1]) {
-        win = 50
+        win = 100
       } else if (rand < rates[2]) {
         win = 20
       } else if (rand < rates[3]) {
