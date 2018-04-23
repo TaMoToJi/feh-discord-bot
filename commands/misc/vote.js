@@ -45,12 +45,15 @@ module.exports = class YouSuckCommand extends Command {
     } else if (await this.client.dbl.hasVoted(message.author.id)) {
       return message.reply('You already claimed within the last 24 hours!')
     }
+    database.users[message.author.id].voted = new Date(0)
+    fs.writeFileSync('data.json', JSON.stringify(database))
     message.channel.send(
       new MessageEmbed()
         .setTitle('Vote to recieve three free orbs!')
         .setDescription(
           '[Click here to vote.](https://discordbots.org/bot/436295083244126208/vote) Then use this command again to claim your orbs.'
         )
+        .setFooter('It may take a few minutes for your vote to process')
     )
   }
 }
