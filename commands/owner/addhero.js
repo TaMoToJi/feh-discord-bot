@@ -1,25 +1,32 @@
 const { Command } = require('discord.js-commando')
 const fs = require('fs')
 
-module.exports = class SetBalanceCommand extends Command {
+module.exports = class AddBalanceCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'setbalance',
-      group: 'items',
-      memberName: 'setbalance',
-      description: "Adds orbs to a user's balance",
-      examples: ['setbalance ev3commander 3', 'setbalance MegaNoob123 123'],
-      aliases: ['setbal', 'set-balance', 'set-bal', 'setorbs', 'set-orbs'],
+      name: 'addhero',
+      group: 'owner',
+      memberName: 'addhero',
+      description: "Adds a hero to a user's inventory",
+      examples: ['addhero ev3commander 5 Fjorm'],
+      aliases: ['addunit', 'add-unit', 'add-hero'],
       args: [
         {
           key: 'user',
           type: 'user',
-          prompt: 'Whose balance do you want to set?'
+          prompt: 'What user would you like to add a hero to?'
         },
         {
-          key: 'amount',
+          key: 'stars',
           type: 'integer',
-          prompt: 'How many orbs do you want them to have?'
+          prompt: 'How many stars should the hero have?',
+          max: 5,
+          min: 1
+        },
+        {
+          key: 'hero',
+          type: 'hero',
+          prompt: 'What hero would you like to add?'
         }
       ],
       ownerOnly: true
@@ -36,12 +43,12 @@ module.exports = class SetBalanceCommand extends Command {
         } start\`.`
       )
     } else {
-      database.users[args.user.id].balance = args.amount
+      database.users[args.user.id].heroes.push({name: args.hero.name, title: args.hero.title, rarity: args.stars})
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
       return message.channel.send(
-        `Successfully set ${args.user}'s orbs to ${args.amount}  `
+        `Successfully added a hero to ${args.user}`
       )
     }
   }

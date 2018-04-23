@@ -4,23 +4,22 @@ const fs = require('fs')
 module.exports = class AddBalanceCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'removehero',
-      group: 'heroes',
-      memberName: 'removehero',
-      description: "Removes a hero from a user's inventory",
-      examples: ['removehero SadNoob 22'],
-      aliases: ['removeunit', 'remove-unit', 'remove-hero'],
+      name: 'addbalance',
+      group: 'owner',
+      memberName: 'addbalance',
+      description: "Adds orbs to a user's balance",
+      examples: ['addbalance ev3commander 700', 'addbalance MegaNoob123 -200'],
+      aliases: ['addbal', 'add-balance', 'add-bal', 'addorbs', 'add-orbs'],
       args: [
         {
           key: 'user',
           type: 'user',
-          prompt: 'What user would you like to remove a hero from?'
+          prompt: 'What user would you like to add orbs to?'
         },
         {
-          key: 'hero',
+          key: 'amount',
           type: 'integer',
-          prompt: 'What hero would you like to remove?',
-          min: 1
+          prompt: 'How many orbs would you like to add?'
         }
       ],
       ownerOnly: true
@@ -37,15 +36,12 @@ module.exports = class AddBalanceCommand extends Command {
         } start\`.`
       )
     } else {
-      delete database.users[args.user.id].heroes[args.hero - 1]
-      database.users[args.user.id].heroes = database.users[args.user.id].heroes.filter(
-        e => e !== null
-      )
+      database.users[args.user.id].balance += args.amount
       fs.writeFile('data.json', JSON.stringify(database), err => {
         if (err) throw err
       })
       return message.channel.send(
-        `Successfully removed a hero from ${args.user}`
+        `Successfully added ${args.amount} orbs to ${args.user}`
       )
     }
   }

@@ -28,6 +28,7 @@ client
 
 client.registry
   .registerGroups([
+    ['owner', 'Owner-only commands'],
     ['items', 'Your inventory/balance'],
     ['heroes', 'Your heroes/skills'],
     ['game', 'General game commands'],

@@ -5,7 +5,7 @@ module.exports = class ResetBalanceCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'resetbalance',
-      group: 'items',
+      group: 'owner',
       memberName: 'resetbalance',
       description: "Resets a user's balance",
       examples: ['resetbalance ev3commander', 'resetbalance MegaNoob123'],
