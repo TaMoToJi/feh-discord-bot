@@ -10,7 +10,11 @@ module.exports = class AddBalanceCommand extends Command {
       description: 'Participates in the orb lottery for 1 orb',
       details: 'You have a 0.1% chance to win 500 orbs, a 0.2% chance to win 100 orbs, a 1% chance to win 20 orbs, a 5% chance to win 5 orbs, and a 10% chance to win 1 orb',
       examples: ['lottery'],
-      aliases: ['orblottery', 'orb-lottery']
+      aliases: ['orblottery', 'orb-lottery'],
+      throttling: {
+        usages: 5,
+        time: 8
+      }
     })
   }
   run (message) {
