@@ -63,6 +63,7 @@ module.exports = class ResetCommand extends Command {
         )
         fs.writeFileSync('data.json', JSON.stringify(database))
       }
+      message.channel.send('Trade confirmed!')
     }
     if (user.id === message.author.id) {
       return message.reply('Why trade with yourself? Get some friends 🅱oi')
@@ -281,7 +282,7 @@ module.exports = class ResetCommand extends Command {
               }
             )
             .then(() => {
-              oneConfirm ? confirm(choices).then(message.channel.send('Trade confirmed!')) : (oneConfirm = true)
+              oneConfirm ? confirm(choices) : (oneConfirm = true)
             })
           msg
             .awaitReactions(
@@ -293,7 +294,7 @@ module.exports = class ResetCommand extends Command {
               }
             )
             .then(() => {
-              oneConfirm ? confirm(choices).then(message.channel.send('Trade confirmed!')) : (oneConfirm = true)
+              oneConfirm ? confirm(choices) : (oneConfirm = true)
             })
         }
       }, 100)
