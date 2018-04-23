@@ -13,7 +13,7 @@ module.exports = class AddBalanceCommand extends Command {
       aliases: ['orblottery', 'orb-lottery'],
       throttling: {
         usages: 5,
-        time: 8
+        duration: 8
       }
     })
   }
